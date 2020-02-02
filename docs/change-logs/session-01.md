@@ -104,6 +104,6 @@
 
     ```bash
     $ make init
-    $ make start
+    $ ./control.sh start
     ```
 
