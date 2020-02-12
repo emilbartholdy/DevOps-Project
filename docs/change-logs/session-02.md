@@ -9,16 +9,4 @@
    $ sudo apt-get install npm
    ```
 
-2. Inside the application directory, run the following command to install all dependencies for the Node applications:
 
-   ```bash
-   $ npm i --save-dev
-   ```
-
-### Running E2E tests
-
-Inside the application directory, execute the following command to run the E2E tests:
-
-```bash
-$ npm test
-```
