@@ -16,15 +16,12 @@ jobs:
         echo Add other actions to build,
         echo test, and deploy your project.
     - name: Checkout
-      uses: actions/checkout@v1
-    - run: commandToBuildYourProject.sh
-    - name: Dockerize
-      if: success()
-      uses: manusa/actions-publish-docker@master
+      uses: zenato/docker-action@master
       with:
-        name: dagandersen/d3v0ps-dr3ng3n3
         username: ${{ secrets.DOCKER_DAG_TEST_USER }}
         password: ${{ secrets.DOCKER_DAG_TEST_PASSWORD }}
+        repository: dagandersen/d3v0ps-dr3ng3n3
+        tag: 1.0
     - uses: actions/checkout@v2
     - name: Run a one-line script
       run: echo Hello, world!
