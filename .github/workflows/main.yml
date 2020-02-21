@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - run: |
-          docker-compose build
-          docker-compose up
-          docker ps
+      - run: docker ps
+         # docker-compose build
+         # docker-compose up
+         
           
 
     # steps:
