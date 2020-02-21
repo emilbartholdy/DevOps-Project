@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - run: docker ps
+      - run: ls -a
          # docker-compose build
          # docker-compose up
          
