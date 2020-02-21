@@ -5,15 +5,15 @@ on: [push]
 jobs:
   build:
 
-    runs-on: ubuntu-latest
-    
+    runs-on: ubuntu-latest   
     steps:
-      - run: | 
-           cd ${{ github.HOME }}
-           ls
-           docker-compose build
-           docker-compose up
-           docker-ps
+
+      # may or may not have a name, it's quite self-descriptive
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+      - run: ls
+        
 
     # steps:
     # - uses: actions/checkout@master
