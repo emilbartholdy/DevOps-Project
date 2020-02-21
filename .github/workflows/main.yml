@@ -9,7 +9,8 @@ jobs:
     
     steps:
       - run: | 
-           cd ${{ HOME }}
+           cd ${{ github.HOME }}
+           ls
            docker-compose build
            docker-compose up
            docker-ps
