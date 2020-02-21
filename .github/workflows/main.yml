@@ -14,10 +14,11 @@ jobs:
           ref: ${{ github.ref }}
       - run: |
           docker-compose build
-          docker-compose up
-          docker ps
-        
-
+          docker-compose up -d
+          cd tests
+          npm install
+          npm tests
+          
     # steps:
     # - uses: actions/checkout@master
     # - name: Publish to Registry
