@@ -8,11 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - run: ls -a
-         # docker-compose build
-         # docker-compose up
-         
-          
+      - run: | 
+           cd ${{ HOME }}
+           docker-compose build
+           docker-compose up
+           docker-ps
 
     # steps:
     # - uses: actions/checkout@master
