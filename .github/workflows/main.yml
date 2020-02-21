@@ -15,10 +15,9 @@ jobs:
       - run: |
           docker-compose build
           docker-compose up -d
-          ls
           cd tests
           npm install
-          npm tests
+          npm test
           
     # steps:
     # - uses: actions/checkout@master
