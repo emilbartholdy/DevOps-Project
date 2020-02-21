@@ -15,4 +15,5 @@ jobs:
         name: dagandersen/d3v0ps-dr3ng3n3
         username: ${{ secrets.DOCKER_DAG_TEST_USER }}
         password: ${{ secrets.DOCKER_DAG_TEST_PASSWORD }}
-        dockerfile: backend/Dockerfile
+        workdir: backend
+        # dockerfile: backend/Dockerfile
