@@ -3,9 +3,6 @@ name: CI
 on:
   push:
     branches:
-      - githubactionsci
-  pull_request:
-    branches:
       - master
 
 jobs:
@@ -31,7 +28,7 @@ jobs:
         workdir: frontend
 
     - uses: actions/checkout@v1
-    - name: Copy file via scp
+    - name: Copy files via scp
       uses: appleboy/scp-action@master
       env:
         HOST: ${{ secrets.server_ip }}
@@ -41,16 +38,13 @@ jobs:
         source: "."
         target: "/vagrant/"
 
-    - name: Executing remote  command
+    - name: Docker-Compose Pull and Up
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.server_ip }}
         USERNAME: ${{ secrets.server_user }}
         KEY: ${{ secrets.CI_private_key }}
         script: |
-          echo "cd /vagrant/"
           cd /vagrant/
-          echo "docker-compose pull"
           docker-compose pull 
-          echo "docker-compose up -d"
           docker-compose up -d
