@@ -17,7 +17,7 @@ jobs:
     - name: Push backend to Dockerhub
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: dagandersen/d3v0ps-dr3ng3n3
+        name: dagandersen/backend
         username: ${{ secrets.DOCKER_DAG_TEST_USER }}
         password: ${{ secrets.DOCKER_DAG_TEST_PASSWORD }}
         workdir: backend
@@ -25,7 +25,30 @@ jobs:
     - name: Push frontend to Dockerhub
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: dagandersen/d3v0ps-dr3ng3n3
+        name: dagandersen/frontend
         username: ${{ secrets.DOCKER_DAG_TEST_USER }}
         password: ${{ secrets.DOCKER_DAG_TEST_PASSWORD }}
         workdir: frontend
+
+  build:
+    name: deploy
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Copy file via scp
+      uses: appleboy/scp-action@master
+      env:
+        HOST: ${{ secrets.server_ip }}
+        USERNAME: ${{ secrets.server_user }}
+        KEY: ${{ secrets.CI_private_key }}
+      with:
+        source: "."
+        target: "/vagrant2/"
+
+    - name: Executing remote  command
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.server_ip }}
+        USERNAME: ${{ secrets.server_user }}
+        KEY: ${{ secrets.CI_private_key }}
+        script: echo "hej fra github actions"
