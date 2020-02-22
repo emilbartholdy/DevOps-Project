@@ -230,7 +230,6 @@ app.post('/add_message', async (req, res) => {
   }
 });
 
-// It will wipe the database upon each startup
 db.sequelize.sync().then(async () => {
   app.listen(port, () => {
     console.log(`Server started on port: ${port}`);
