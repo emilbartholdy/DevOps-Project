@@ -1,19 +1,31 @@
 name: CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - githubactionsci
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@master
-    - name: Publish to Registry
+    - name: Push backend to Dockerhub
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
         name: dagandersen/d3v0ps-dr3ng3n3
         username: ${{ secrets.DOCKER_DAG_TEST_USER }}
         password: ${{ secrets.DOCKER_DAG_TEST_PASSWORD }}
         workdir: backend
-        # dockerfile: backend/Dockerfile
+    - uses: actions/checkout@master
+    - name: Push frontend to Dockerhub
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: dagandersen/d3v0ps-dr3ng3n3
+        username: ${{ secrets.DOCKER_DAG_TEST_USER }}
+        password: ${{ secrets.DOCKER_DAG_TEST_PASSWORD }}
+        workdir: frontend
