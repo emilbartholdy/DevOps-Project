@@ -37,7 +37,13 @@
    $ vagrant up
    ```
 
-## How to setup and run (minified) simulator tests in Docker container:
+## How to run integration tests for simulator in Docker container:
+1. Run `docker-compose build` to build all application images.
+2. Run `docker build -t minitwit-simulator-integration-test ./tests/simulator-integration-test -f ./tests/simulator-integration-test/Dockerfile` to build Docker image with simulator integration tests.
+3. Run `docker-compose up -d --force-recreate` to run application in detached mode.
+4. Run `docker run --network=minitwit-network minitwit-simulator-integration-test` to execute simulator integration test.
+
+## How to setup and run (minified) simulator in Docker container:
 1. Run `docker-compose build` to build all application images.
 2. Run `docker build -t minitwit-simulator ./tests/simulator -f ./tests/simulator/Dockerfile` to build Docker image with simulator test.
 3. Run `docker-compose up -d --force-recreate` to run application in detached mode.
