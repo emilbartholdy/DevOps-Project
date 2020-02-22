@@ -43,7 +43,7 @@ jobs:
         KEY: ${{ secrets.CI_private_key }}
       with:
         source: "."
-        target: "/vagrant2/"
+        target: "/vagrant/"
 
     - name: Executing remote  command
       uses: appleboy/ssh-action@master
@@ -51,4 +51,10 @@ jobs:
         host: ${{ secrets.server_ip }}
         USERNAME: ${{ secrets.server_user }}
         KEY: ${{ secrets.CI_private_key }}
-        script: echo "hej fra github actions"
+        script: |
+          echo "cd /vagrant/"
+          cd /vagrant/
+          echo "docker-compose pull"
+          docker-compose pull 
+          echo "docker-compose up -d"
+          docker-compose up -d
