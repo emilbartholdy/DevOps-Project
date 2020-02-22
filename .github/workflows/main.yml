@@ -30,7 +30,7 @@ jobs:
         password: ${{ secrets.DOCKER_DAG_TEST_PASSWORD }}
         workdir: frontend
 
-  build:
+  deploy:
     name: deploy
     runs-on: ubuntu-latest
     steps:
