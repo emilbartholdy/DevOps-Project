@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  build:
+  build and deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,10 +30,6 @@ jobs:
         password: ${{ secrets.DOCKER_DAG_TEST_PASSWORD }}
         workdir: frontend
 
-  deploy:
-    name: deploy
-    runs-on: ubuntu-latest
-    steps:
     - uses: actions/checkout@v1
     - name: Copy file via scp
       uses: appleboy/scp-action@master
