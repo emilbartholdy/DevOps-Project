@@ -52,5 +52,5 @@ jobs:
       - run: |
           docker-compose build
           docker build -t minitwit-simulator ./tests/simulator -f ./tests/simulator/Dockerfile
-          docker-compose up -d --force-recreate
+          docker-compose up -d --force-recreate 
           docker run --network=minitwit-network minitwit-simulator
