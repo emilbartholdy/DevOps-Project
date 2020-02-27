@@ -10,5 +10,5 @@ jobs:
   BuildAndDeploy:
     runs-on: ubuntu-latest
     steps:
-    - if: github.ref == 'refs/heads/master'
     - run: echo "Deploying..."
+      if: github.ref == 'refs/heads/master'
