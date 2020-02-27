@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - if: github.ref == 'refs/heads/master'
-    - run: echo "Deploying"
+    - run: echo "Deploying..."
