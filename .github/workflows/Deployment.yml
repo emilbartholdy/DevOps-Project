@@ -6,7 +6,7 @@ jobs:
   Testing:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Testing.."
+      - run: echo "Testing..."
   BuildAndDeploy:
     runs-on: ubuntu-latest
     steps:
