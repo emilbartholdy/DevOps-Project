@@ -6,9 +6,9 @@ jobs:
   Testing:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Testing..."
+      - run: echo "Testing.."
   BuildAndDeploy:
     runs-on: ubuntu-latest
     steps:
-    - run: echo "Deploying..."
+    - run: echo "Deploying.."
       if: github.ref == 'refs/heads/master'
