@@ -3,12 +3,20 @@ name: Deployment
 on: push
 
 jobs:
-  Testing:
+  testing:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Testing...."
-  BuildAndDeploy:
+  
+  testing1:
+    runs-on: [ubuntu-latest]
+    steps:
+      - run: echo "Testing 1...."
+  
+  build-and-deploy:
+    name: Build and deploy
     if: github.ref == 'refs/heads/master'
+    needs: [testing, testing1]
     runs-on: ubuntu-latest
     steps:
     - run: echo "Deploying.."
